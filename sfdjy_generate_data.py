@@ -74,11 +74,11 @@ def sfdjy_data_augment(image, label):
 image_dir = './sfdjy_train_data/images/'
 label_dir = './sfdjy_train_data/labels/'
 
-count = 0
+count = 10000
 
 sfdjy_images_paths = glob.glob('./sfdjy_data/images/' + '*.jpg')
 print('sfdjy_images_paths length is ', len(sfdjy_images_paths))
-images_paths = sfdjy_images_paths[:10]
+images_paths = sfdjy_images_paths[10:30]
 print('images_paths length is ', len(images_paths))
 
 for image_path in images_paths:
