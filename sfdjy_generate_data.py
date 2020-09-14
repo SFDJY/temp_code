@@ -81,7 +81,56 @@ print('sfdjy_images_paths length is ', len(sfdjy_images_paths))
 images_paths = sfdjy_images_paths[10:30]
 print('images_paths length is ', len(images_paths))
 
-for image_path in images_paths:
+# for image_path in images_paths:
+#     _, file_name = os.path.split(image_path)
+#     image_name, _ = os.path.splitext(file_name)
+#     label_path = './sfdjy_data/labels/' + image_name + '_label.png'
+
+#     image = cv2.imread(image_path)
+#     label = cv2.imread(label_path)
+
+#     image_width_new = np.int(np.ceil(image.shape[1] / image_width)) * image_width
+#     image_height_new = np.int(np.ceil(image.shape[0] / image_height)) * image_height
+
+#     image = cv2.resize(image, (image_width_new, image_height_new))
+#     label = cv2.resize(label, (image_width_new, image_height_new))
+
+#     label_new = np.zeros((image_height_new, image_width_new), dtype=np.uint8)
+#     for m in range(label_new.shape[0]):
+#         for n in range(label_new.shape[1]):
+#             if (np.array(label[m, n]) == (0, 0, 0)).all():
+#                 label_new[m, n] = 0
+#             if (np.array(label[m, n]) == (255, 0, 0)).all():
+#                 label_new[m, n] = 1
+#             if (np.array(label[m, n]) == (0, 255, 0)).all():
+#                 label_new[m, n] = 2
+#             if (np.array(label[m, n]) == (0, 255, 255)).all():
+#                 label_new[m, n] = 3
+#             if (np.array(label[m, n]) == (255, 255, 0)).all():
+#                 label_new[m, n] = 4
+#             if (np.array(label[m, n]) == (0, 0, 255)).all():
+#                 label_new[m, n] = 5
+
+#     for i in range(image_height_new // image_height):
+#         for j in range(image_width_new // image_width):
+#             image_result = image[i * image_height:(i + 1) * image_height, j * image_width:(j + 1) * image_width]
+#             label_result = label_new[i * image_height:(i + 1) * image_height, j * image_width:(j + 1) * image_width]
+
+#             print(count)
+#             print(label_result.shape)
+
+#             image_result, label_result = sfdjy_data_augment(image_result, label_result)
+
+#             cv2.imwrite(image_dir + str(count) + '.jpg', image_result)
+#             cv2.imwrite(label_dir + str(count) + '.png', label_result)
+#             count = count + 1
+
+count = 0
+
+test_images_paths = sfdjy_images_paths[100:120]
+print('images_paths length is ', len(test_images_paths))
+
+for image_path in test_images_paths:
     _, file_name = os.path.split(image_path)
     image_name, _ = os.path.splitext(file_name)
     label_path = './sfdjy_data/labels/' + image_name + '_label.png'
@@ -119,55 +168,6 @@ for image_path in images_paths:
             print(count)
             print(label_result.shape)
 
-            image_result, label_result = sfdjy_data_augment(image_result, label_result)
-
-            cv2.imwrite(image_dir + str(count) + '.jpg', image_result)
-            cv2.imwrite(label_dir + str(count) + '.png', label_result)
+            cv2.imwrite('./sfdjy_test_data/images/' + str(count) + '.jpg', image_result)
+            cv2.imwrite('./sfdjy_test_data/labels/' + str(count) + '.png', label_result)
             count = count + 1
-
-# count = 0
-#
-# test_images_paths = sfdjy_images_paths[100:]
-# print('images_paths length is ', len(test_images_paths))
-#
-# for image_path in test_images_paths:
-#     _, file_name = os.path.split(image_path)
-#     image_name, _ = os.path.splitext(file_name)
-#     label_path = './sfdjy_data/labels/' + image_name + '_label.png'
-#
-#     image = cv2.imread(image_path)
-#     label = cv2.imread(label_path)
-#
-#     image_width_new = np.int(np.ceil(image.shape[1] / image_width)) * image_width
-#     image_height_new = np.int(np.ceil(image.shape[0] / image_height)) * image_height
-#
-#     image = cv2.resize(image, (image_width_new, image_height_new))
-#     label = cv2.resize(label, (image_width_new, image_height_new))
-#
-#     label_new = np.zeros((image_height_new, image_width_new), dtype=np.uint8)
-#     for m in range(label_new.shape[0]):
-#         for n in range(label_new.shape[1]):
-#             if (np.array(label[m, n]) == (0, 0, 0)).all():
-#                 label_new[m, n] = 0
-#             if (np.array(label[m, n]) == (255, 0, 0)).all():
-#                 label_new[m, n] = 1
-#             if (np.array(label[m, n]) == (0, 255, 0)).all():
-#                 label_new[m, n] = 2
-#             if (np.array(label[m, n]) == (0, 255, 255)).all():
-#                 label_new[m, n] = 3
-#             if (np.array(label[m, n]) == (255, 255, 0)).all():
-#                 label_new[m, n] = 4
-#             if (np.array(label[m, n]) == (0, 0, 255)).all():
-#                 label_new[m, n] = 5
-#
-#     for i in range(image_height_new // image_height):
-#         for j in range(image_width_new // image_width):
-#             image_result = image[i * image_height:(i + 1) * image_height, j * image_width:(j + 1) * image_width]
-#             label_result = label_new[i * image_height:(i + 1) * image_height, j * image_width:(j + 1) * image_width]
-#
-#             print(count)
-#             print(label_result.shape)
-#
-#             cv2.imwrite('./sfdjy_test_data/images/' + str(count) + '.jpg', image_result)
-#             cv2.imwrite('./sfdjy_test_data/labels/' + str(count) + '.png', label_result)
-#             count = count + 1
