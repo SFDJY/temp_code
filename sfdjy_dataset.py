@@ -39,5 +39,5 @@ class SFDJY_DataSet(Dataset):
 sfdjy_data = SFDJY_DataSet('./sfdjy_train_data/images/', './sfdjy_train_data/labels/')
 sfdjy_data_loader = DataLoader(sfdjy_data, batch_size=64, shuffle=True)
 
-sfdjy_test_data = SFDJY_DataSet('./sfdjy_test_data/images/', './sfdjy_test_data/labels/')
-sfdjy_test_data_loader = DataLoader(sfdjy_test_data, batch_size=64, shuffle=True)
+#sfdjy_test_data = SFDJY_DataSet('./sfdjy_test_data/images/', './sfdjy_test_data/labels/')
+#sfdjy_test_data_loader = DataLoader(sfdjy_test_data, batch_size=64, shuffle=True)
